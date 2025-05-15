@@ -8,14 +8,16 @@ app.use("/", (req, res, next) => {
   res.send("it is working");
 });
 
-mongoose
-  .connect("mongodb+srv://admin:p1qRoOli0hZxYWVD@cluster0.bofqi.mongodb.net/")
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .then(() => {
-    app.listen(3000, () => {
-      console.log(`Server is running on http://localhost:${3000}`);
-    });
-  })
-  .catch((err) => console.log(err));
+if (DB_URL) {
+  mongoose
+    .connect(DB_URL)
+    .then(() => {
+      console.log("Connected to MongoDB");
+    })
+    .then(() => {
+      app.listen(3000, () => {
+        console.log(`Server is running on http://localhost:${3000}`);
+      });
+    })
+    .catch((err) => console.log(err));
+}
