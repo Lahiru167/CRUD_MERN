@@ -5,7 +5,7 @@ const app = express();
 
 // Middleware
 app.use("/", (req, res, next) => {
-  res.send("it is working");
+  res.send("It is working");
 });
 
 mongoose
